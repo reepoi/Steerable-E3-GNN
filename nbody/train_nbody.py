@@ -9,7 +9,7 @@ from e3nn.o3 import Irreps
 from torch_geometric.data import Data
 from e3nn.o3 import Irreps, spherical_harmonics
 from torch_scatter import scatter
-
+import utils
 
 from nbody.dataset_nbody import NBodyDataset
 
@@ -67,9 +67,9 @@ def train(gpu, model, args):
 
     if args.log and gpu == 0:
         if args.time_exp:
-            wandb.init(project="Nbody time", name=args.ID, config=args, entity="segnn")
+            wandb.init(project="Nbody time", name=args.ID, config=args, entity="taost")
         else:
-            wandb.init(project="SEGNN Nbody", name=args.ID, config=args, entity="segnn")
+            wandb.init(project="SEGNN Nbody", name=args.ID, config=args, entity="taost")
 
     best_val_loss = 1e8
     best_test_loss = 1e8
@@ -89,6 +89,7 @@ def train(gpu, model, args):
                 best_val_loss = val_loss
                 best_test_loss = test_loss
                 best_epoch = epoch
+                utils.save_model(model, args.save_dir, args.ID, device)
             print("*** Best Val Loss: %.5f \t Best Test Loss: %.5f \t Best epoch %d" %
                   (best_val_loss, best_test_loss, best_epoch))
 
@@ -156,3 +157,4 @@ def run_epoch(model, optimizer, criterion, epoch, loader, transform, device, arg
     print('%s epoch %d avg loss: %.5f' % (prefix+loader.dataset.partition, epoch, res['loss'] / res['counter']))
 
     return res['loss'] / res['counter']
+

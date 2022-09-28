@@ -38,7 +38,7 @@ if __name__ == "__main__":
                         help='logging flag')
     parser.add_argument('--num_workers', type=int, default=4,
                         help='Num workers in dataloader')
-    parser.add_argument('--save_dir', type=str, default="saved models",
+    parser.add_argument('--save_dir', type=str, default="savedmodels",
                         help='Directory in which to save models')
 
     # Data parameters
@@ -77,9 +77,9 @@ if __name__ == "__main__":
     parser.add_argument('--hidden_features', type=int, default=128,
                         help='max degree of hidden rep')
     parser.add_argument('--lmax_h', type=int, default=2,
-                        help='max degree of hidden rep')
+                        help='max degree of feature rep (h are features, and l_f is feature order)')
     parser.add_argument('--lmax_attr', type=int, default=3,
-                        help='max degree of geometric attribute embedding')
+                        help='max degree of geometric attribute embedding (a are attributes, and l_a is attribute order)')
     parser.add_argument('--subspace_type', type=str, default="weightbalanced",
                         help='How to divide spherical harmonic subspaces')
     parser.add_argument('--layers', type=int, default=7,
@@ -189,3 +189,4 @@ if __name__ == "__main__":
         print('found free port', port)
         os.environ['MASTER_PORT'] = str(port)
         mp.spawn(train, nprocs=args.gpus, args=(model, args,))
+

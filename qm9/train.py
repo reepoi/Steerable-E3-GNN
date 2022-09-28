@@ -119,3 +119,4 @@ def train(gpu, model, args):
         wandb.finish()
     if args.gpus > 1:
         dist.destroy_process_group()
+

@@ -84,3 +84,4 @@ def WeightBalancedIrreps(irreps_in1_scalar, irreps_in2, sh=True, lmax=None):
         weight_numel1 = FullyConnectedTensorProduct(irreps_in1, irreps_in2, irreps_in1).weight_numel
     print('Determined irrep type:', irreps_in1)
     return Irreps(irreps_in1)
+

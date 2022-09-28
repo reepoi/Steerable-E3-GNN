@@ -14,7 +14,7 @@ class SEGNN(nn.Module):
 
     def __init__(
         self,
-        input_irreps,
+        input_irreps, # irrep = irreducible representation
         hidden_irreps,
         output_irreps,
         edge_attr_irreps,
@@ -232,3 +232,4 @@ class SEGNNLayer(MessagePassing):
         update = self.update_layer_2(update, node_attr)
         x += update  # Residual connection
         return x
+

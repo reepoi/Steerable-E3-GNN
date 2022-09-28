@@ -66,9 +66,9 @@ def train(gpu, model, args):
 
     if args.log and gpu == 0:
         if args.time_exp:
-            wandb.init(project="Gravity time", name=args.ID, config=args, entity="segnn")
+            wandb.init(project="Gravity time", name=args.ID, config=args, entity="taost")
         else:
-            wandb.init(project="SEGNN Gravity", name=args.ID, config=args, entity="segnn")
+            wandb.init(project="SEGNN Gravity", name=args.ID, config=args, entity="taost")
 
     best_val_loss = 1e8
     best_test_loss = 1e8
