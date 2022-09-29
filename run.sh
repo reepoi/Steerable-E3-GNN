@@ -66,6 +66,7 @@ elif [[ $experiment == "gravity" ]]; then
         --batch_size=100 \
         --neighbours=6 \
         --gpu=0 \
+        --target=pos \
         --log=true
 elif [[ $experiment == "qm9" ]]; then
     echo "running qm9..."
