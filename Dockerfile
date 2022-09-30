@@ -1,5 +1,7 @@
 FROM continuumio/miniconda3:4.12.0
 
+LABEL taost=taost
+
 ENV NVIDIA_VISIBLE_DEVICES=all
 
 ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility
@@ -27,8 +29,6 @@ COPY . .
 ENV CUDA_VISIBLE_DEVICES=0
 
 RUN bash run.sh charge true
-
-LABEL taost=taost
 
 ENV PORT=8800
 
