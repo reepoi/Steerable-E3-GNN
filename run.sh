@@ -35,7 +35,7 @@ if [[ $experiment == "charge" ]]; then
             --hidden_features=64 \
             --subspace_type=weightbalanced \
             --norm=none \
-            --gpu=0 \
+            --gpu=1 \
             --log=true
     fi
 elif [[ $experiment == "gravity" ]]; then
@@ -73,7 +73,7 @@ elif [[ $experiment == "gravity" ]]; then
             --norm=none \
             --batch_size=100 \
             --neighbours=6 \
-            --gpu=0 \
+            --gpu=1 \
             --target=pos \
             --log=true
     fi

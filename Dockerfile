@@ -14,7 +14,7 @@ RUN apt -y install build-essential
 
 RUN apt-get -y install git
 
-COPY . .
+COPY environment.yml .
 
 ENV SEGNN_ENV_NAME=segnn
 
@@ -22,9 +22,11 @@ RUN conda env create --name $SEGNN_ENV_NAME --file environment.yml
 
 RUN conda activate $SEGNN_ENV_NAME
 
-RUN bash run.sh charge true
+COPY . .
 
 ENV CUDA_VISIBLE_DEVICES=0
+
+RUN bash run.sh charge true
 
 LABEL taost=taost
 
